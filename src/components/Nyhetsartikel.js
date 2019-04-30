@@ -13,3 +13,4 @@ function Nyhetsartikel (){
 
 
 export default Nyhetsartikel
+//test
