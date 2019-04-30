@@ -2,8 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Nyhetslista from './components/Nyhetslista';
+import data from './data';
 
 function App() {
+  constructor  (props) {
+    super(props);
+    this.state = {articles: [{{urlToImage:”https://source.unsplash.com/random/75*25/?music”,
+      title:”Musiknyhet”,
+      description: ”Här kommer en musiknyhet”,}]};
+  }
   return (
     <Nyhetslista/>
 
