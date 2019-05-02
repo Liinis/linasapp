@@ -1,30 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+//import logo from './logo.svg';
 import './App.css';
 import Nyhetslista from './components/Nyhetslista';
-import data from './data';
+//import data from './data';
 
-function App() {
+class App extends Component {
   constructor  (props) {
     super(props);
-    this.state = {articles: [{{urlToImage:”https://source.unsplash.com/random/75*25/?music”,
-      title:”Musiknyhet”,
-      description: ”Här kommer en musiknyhet”,}]};
+    this.state = {
+      articles: [
+        {
+          urlToImage: "https://source.unsplash.com/random/75*25/?music",
+      title:"Musiknyhet 1",
+      description: "Beskrivning av musiknyheten",
+        },
+        {
+        urlToImage: "https://source.unsplash.com/random/75*25/?music",
+        title:"Musiknyhet 2",
+        description: "Beskrivning av den andra musiknyheten",
+          }]};
+
   }
-  return (
-    <Nyhetslista/>
+  componentDidMount() { 
+    fetch("https://newsapi.org/v2/top-headlines?country=se&category=entertainment&apiKey=1a5dd5650dad49f9ac2c821974147928")
+      .then(function (response) {
+      // gör något med det som kom tillbaka
+        if (response.status !== 200) {
+          throw Error(`status: ${response.status}`);
+        }
+      return response.json()
+    } ).then( jsondata => {
+      //gör något med json-objektet
+      this.setState({ articles: jsondata.articles })
+    }).catch(error =>{
+      this.setState({
+        articles: [{
+          urlToImage: "fejk.jpg",
+          title: "Något gick fel",
+          description: `Något gick fel, ${error.message}`,
+        }]
+      });
+    })
+  }
 
-    /*<section>
-      <img src="https://source.unsplash.com/random/75*25/?music"></img>
-      <article></article>
-      <h2>Musiknyhet</h2>
-      <p>Här kommer en musiknyhet</p>
-      <a>Läs mer</a>
-   </section>
-   */
-
-    
-  );
+  render() {
+    return (
+      <Nyhetslista
+        minaArtiklar={this.state.articles} />
+    );
+  }
 }
 
 export default App;
