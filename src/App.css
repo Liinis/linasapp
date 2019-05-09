@@ -24,6 +24,24 @@
   color: #61dafb;
 }
 */
+
+.grid-container {
+  display: grid;
+  grid-row-gap: 50px;
+  border: 5px white;
+  border-bottom-style: solid;
+}
+.grid-container2 {
+  display: grid;
+  grid-row-gap: 50px;
+  margin-top: 30px;
+  margin-left: 30px;
+  border: 2px white; /* vart ska denna placeras?*/
+}
+.border {
+  border-bottom-style: solid;
+  border: 2px white; /* vart ska denna placeras?*/
+}
 body {
   background-color: lightcoral ;
 }

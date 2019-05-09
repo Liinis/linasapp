@@ -8,6 +8,7 @@ function Nyhetsartikel (props){
       <h2 className="h2">{props.minArtikel.title}</h2>
       <p className="p">{props.minArtikel.description}</p>
       <a href={props.minArtikel.url}  target=""className= "a:hover, a" >Läs mer</a>
+      <div className="border"></div>
         </article>
     );
     }

@@ -4,9 +4,10 @@ import Nyhetsartikel from './Nyhetsartikel';
 
 function Nyhetslista(props) {
   return (<section>
-      <div>
+      <div className="grid-container">
       <h1 className="h1">Här kan du läsa de senaste nöjesnyheterna från Sverige</h1>
   </div>
+  <div className="grid-container2">
     {props.minaArtiklar.map(
       function (item, index) {
         return <Nyhetsartikel
@@ -14,6 +15,7 @@ function Nyhetslista(props) {
           key={`artikel${index}`}
         />
     })}
+    </div>
   </section>);
 }
  
