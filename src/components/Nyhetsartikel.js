@@ -3,10 +3,11 @@ import React from 'react';
 function Nyhetsartikel (props){
     return (
         <article>
-               <img src={props.minArtikel.urlToImage} alt={props.minArtikel.title}/>  
-      <h2>{props.minArtikel.title}</h2>
-      <p>{props.minArtikel.description}</p>
-      <a href={props.minArtikel.url}  target="">Läs mer</a>
+               <img src={props.minArtikel.urlToImage} alt={props.minArtikel.title}
+               className="img"/>  
+      <h2 className="h2">{props.minArtikel.title}</h2>
+      <p className="p">{props.minArtikel.description}</p>
+      <a href={props.minArtikel.url}  target=""className= "a:hover, a" >Läs mer</a>
         </article>
     );
     }

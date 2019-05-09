@@ -8,17 +8,9 @@ class App extends Component {
   constructor  (props) {
     super(props);
     this.state = {
-      articles: [
-        {
-          urlToImage: "https://source.unsplash.com/random/75*25/?music",
-      title:"Musiknyhet 1",
-      description: "Beskrivning av musiknyheten",
-        },
-        {
-        urlToImage: "https://source.unsplash.com/random/75*25/?music",
-        title:"Musiknyhet 2",
-        description: "Beskrivning av den andra musiknyheten",
-          }]};
+      articles: []};
+    
+    
 
   }
   componentDidMount() { 
@@ -52,3 +44,22 @@ class App extends Component {
 }
 
 export default App;
+
+/*
+class App extends Component {
+  constructor  (props) {
+    super(props);
+    this.state = {
+      articles: [
+        {
+          urlToImage: "https://source.unsplash.com/random/75*25/?music",
+      title:"Musiknyhet 1",
+      description: "Beskrivning av musiknyheten",
+        },
+        {
+        urlToImage: "https://source.unsplash.com/random/75*25/?music",
+        title:"Musiknyhet 2",
+        description: "Beskrivning av den andra musiknyheten",
+          }]};
+
+  }*/

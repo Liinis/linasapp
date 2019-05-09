@@ -1,3 +1,4 @@
+/*
 .App {
   text-align: center;
 }
@@ -22,6 +23,48 @@
 .App-link {
   color: #61dafb;
 }
+*/
+body {
+  background-color: lightcoral ;
+}
+.img {
+  width: 50%;
+  height: auto;
+}
+.h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1.8em;
+  text-align: center;
+  color:white;
+  font-family: Helvetica, Verdana, sans-serif;
+}
+.h2 {
+    font-weight: 900;
+    font-size: 1.3em;
+    text-align: left;
+    color:white;
+    font-family: Helvetica, Verdana, sans-serif;
+}
+.p {
+  font-size: 0.9em;
+    text-align: left;
+    color: white;
+    font-family: Helvetica, Verdana, sans-serif;
+}
+a:hover {
+  color: grey;
+  }
+
+  .a {
+    font-weight: 600;
+    font-size: 0.9em;
+    text-align: left;
+    color: white;
+    font-family: Helvetica, Verdana, sans-serif;
+    text-decoration: none;
+    
+  }
 
 @keyframes App-logo-spin {
   from {
@@ -30,4 +73,6 @@
   to {
     transform: rotate(360deg);
   }
+
+ 
 }
