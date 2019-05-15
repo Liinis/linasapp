@@ -3,13 +3,19 @@ import React from 'react';
 function Nyhetsartikel (props){
     return (
         <article>
+            <div className="grid-container3"> 
+
                <img src={props.minArtikel.urlToImage} alt={props.minArtikel.title}
                className="img"/>  
       <h2 className="h2">{props.minArtikel.title}</h2>
       <p className="p">{props.minArtikel.description}</p>
-      <a href={props.minArtikel.url}  target=""className= "a:hover, a" >Läs mer</a>
-      <div className="border"></div>
+      
+      <a href={props.minArtikel.url}  target="_blank" className= "a:hover, a" >Läs mer</a>
+      <div className="border"></div> 
+   
+     </div>
         </article>
+       
     );
     }
 

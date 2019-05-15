@@ -37,8 +37,20 @@ class App extends Component {
 
   render() {
     return (
+      <div className="App">
+<header className="App-header">
+<div className="grid-container">
+     
+     <h1 className="h1">Här kan du läsa de senaste nöjesnyheterna från Sverige</h1>
+ </div>
+     
+     
+
+ </header>
       <Nyhetslista
         minaArtiklar={this.state.articles} />
+
+</div>
     );
   }
 }
