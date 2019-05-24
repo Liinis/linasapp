@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import Nyhetslista from './components/Nyhetslista';
-//import data from './data';
+import withFirebaseAuth from 'react-with-firebase-auth'
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import firebaseConfig from './firebaseConfig';
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
   constructor  (props) {
     super(props);
     this.state = {
       articles: []};
-    
-    
-
+   
   }
   componentDidMount() { 
     fetch("https://newsapi.org/v2/top-headlines?country=se&category=entertainment&apiKey=1a5dd5650dad49f9ac2c821974147928")
@@ -36,17 +38,38 @@ class App extends Component {
   }
 
   render() {
+    const {
+      user,
+      signOut,
+      signInWithGoogle,
+    } = this.props;
+
     return (
-      <div className="App">
-<header className="App-header">
-<div className="grid-container">
+     <div className="App">
+      <header className="App-header">
+       <div>
+        {
+       
+          user 
+            ? <p>Hello, {user.displayName}</p>
+            : <p>Please sign in.</p>
+        }
+        {
+          user
+            ? <button onClick={signOut}>Sign out</button>
+            : <button onClick={signInWithGoogle}>Sign in with Google</button>
+        }
+        </div>
      
-     <h1 className="h1">Här kan du läsa de senaste nöjesnyheterna från Sverige</h1>
- </div>
+
+     
+     <h1 className="h1">Läs de senaste nöjesnyheterna här</h1>
+     </header>
+
      
      
 
- </header>
+
       <Nyhetslista
         minaArtiklar={this.state.articles} />
 
@@ -55,23 +78,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const firebaseAppAuth = firebaseApp.auth();
 
-/*
-class App extends Component {
-  constructor  (props) {
-    super(props);
-    this.state = {
-      articles: [
-        {
-          urlToImage: "https://source.unsplash.com/random/75*25/?music",
-      title:"Musiknyhet 1",
-      description: "Beskrivning av musiknyheten",
-        },
-        {
-        urlToImage: "https://source.unsplash.com/random/75*25/?music",
-        title:"Musiknyhet 2",
-        description: "Beskrivning av den andra musiknyheten",
-          }]};
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
 
-  }*/
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(App);
+
+

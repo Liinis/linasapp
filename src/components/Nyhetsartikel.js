@@ -2,9 +2,9 @@ import React from 'react';
 
 function Nyhetsartikel (props){
     return (
-        <article>
+       
             <div className="grid-container3"> 
-
+ <article>
                <img src={props.minArtikel.urlToImage} alt={props.minArtikel.title}
                className="img"/>  
       <h2 className="h2">{props.minArtikel.title}</h2>
@@ -12,9 +12,9 @@ function Nyhetsartikel (props){
       
       <a href={props.minArtikel.url}  target="_blank" className= "a:hover, a" >Läs mer</a>
       <div className="border"></div> 
-   
+      </article>
      </div>
-        </article>
+        
        
     );
     }
