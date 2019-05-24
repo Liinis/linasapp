@@ -6,18 +6,16 @@ import firebaseConfig from './firebaseConfig';
 import './App.css';
 import Nyhetslista from './components/Nyhetslista'
 
+const firebaseApp = firebase.initializeApp(firebaseConfig); //Initializerar Firebase appen genom att använda konfigurera den
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-
-class App extends Component {
-  constructor  (props) {
-    super(props);
-    this.state = {
-      articles: []};
-    
-    
-
+class App extends Component {   //en klass skapas som heter "App". Det är en komponent = befintlig grej från React, och består av element = det man ser på skärmen, som i den här appen de enskilda nyheterna som kommer att visas på sidan.
+  constructor  (props) {      // en constructor gör att...
+    super(props);               //super...props..
+    this.state = {              //this.state gör att..
+      articles: []};            //läser in artiklarna som en string
   }
+
+
   componentDidMount() { 
     fetch("https://newsapi.org/v2/top-headlines?country=se&category=entertainment&apiKey=1a5dd5650dad49f9ac2c821974147928")
       .then(function (response) {
@@ -25,6 +23,7 @@ class App extends Component {
         if (response.status !== 200) {
           throw Error(`status: ${response.status}`);
         }
+
       return response.json()
     } ).then( jsondata => {
       //gör något med json-objektet
@@ -41,50 +40,58 @@ class App extends Component {
   }
 
 
-    render() {
-      const {
+    render() {          // Appen  renderas och resultatet är en App som består av en rubrik på rad 53 och signinknapp på 66.
+      const {           //ger oss user , error och signIn och signOut metoder som properties.
         user,
         signOut,
         signInWithGoogle,
       } = this.props;
+
     return (
-      <div className="App">
-<header className="App-header">
-<div className="grid-container">
-     
-     <h1 className="h1">Här kan du läsa de senaste nöjesnyheterna</h1>
- </div>
- <div>
-  {
-            user
-              ? <p>Hello, {user.displayName}</p>
-              : <p>Please sign in.</p>
-          }
+      <div>
+        <header className="grid-container">
+            <h1 className="h1">Här kan du läsa de senaste nöjesnyheterna</h1>
+ 
+              <div>
+                
+                {                     
+                  user  //Ändrar markup så den frågar användaren att sign in eller sign out:
+                  ? <h2 className="h2center">Hello, {user.displayName}</h2>
+                  : <h2 className="h2center">Please sign in</h2>
+                }
 
-          {
-            user
-              ? <button onClick={signOut}>Sign out</button>
-              : <button onClick={signInWithGoogle}>Sign in with Google</button>
-          }
-  </div>
-     
+                {
+                  user
+                  ? <button onClick={signOut}>Sign out</button>
+                  : <button onClick={signInWithGoogle}>Sign in with Google</button>
+                }
+              </div>
+  
+          </header>
 
- </header>
-      <Nyhetslista
+      <Nyhetslista    //  komponenten Nyhetslista importeras. Allt från Nyhetslista.js kommer att placeras här i App.
         minaArtiklar={this.state.articles} />
 
 </div>
     );
   }
 }
-
+/*Sätt upp the providers("leverantören") vi vill supporta och få tillgång till  auth library (autentiseringsbibilioteket):*/
 const firebaseAppAuth = firebaseApp.auth();
 
 const providers = {
   googleProvider: new firebase.auth.GoogleAuthProvider(),
 };
 
-export default withFirebaseAuth({
-  providers,
+
+export default withFirebaseAuth({  //ger tillgång till the properties som ges av FirebaseAuth HOC i App komponenten.
+  providers,                        
   firebaseAppAuth,
 })(App);
+
+
+
+
+
+
+
