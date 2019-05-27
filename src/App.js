@@ -11,24 +11,24 @@ const firebaseApp = firebase.initializeApp(firebaseConfig); //Initializerar Fire
 class App extends Component {   //en klass skapas som heter "App". Det är en komponent = befintlig grej från React, och består av element = det man ser på skärmen, som i den här appen de enskilda nyheterna som kommer att visas på sidan.
   constructor  (props) {      // en constructor gör att...
     super(props);               //super...props..
-    this.state = {              //this.state gör att..
-      articles: []};            //läser in artiklarna som en string
+    this.state = {              //this.state läser in artiklarna som en string
+      articles: []};            
   }
 
 
-  componentDidMount() { 
-    fetch("https://newsapi.org/v2/top-headlines?country=se&category=entertainment&apiKey=1a5dd5650dad49f9ac2c821974147928")
+  componentDidMount() { //denna försäkrar att komponenten omedelbart körs/renderas el vad man ska säga, så fort browser öppnas eller refreshas. 
+    fetch("https://newsapi.org/v2/top-headlines?country=se&category=entertainment&apiKey=1a5dd5650dad49f9ac2c821974147928")  //fetch hämtar in datat från denna apinyckel dvs alla nöjesnyheter
       .then(function (response) {
       // gör något med det som kom tillbaka
         if (response.status !== 200) {
           throw Error(`status: ${response.status}`);
-        }
+        }   // om allt är ok visas nyheterna i appen
 
       return response.json()
     } ).then( jsondata => {
       //gör något med json-objektet
       this.setState({ articles: jsondata.articles })
-    }).catch(error =>{
+    }).catch(error =>{  //om ngt går fel med att läsa in datat visas felmeddelande i browsern
       this.setState({
         articles: [{
           urlToImage: "fejk.jpg",
@@ -49,7 +49,7 @@ class App extends Component {   //en klass skapas som heter "App". Det är en ko
 
     return (
       <div>
-        <header className="grid-container">
+        <header className="grid-container"> 
             <h1 className="h1">Här kan du läsa de senaste nöjesnyheterna</h1>
  
               <div>
@@ -87,11 +87,11 @@ const providers = {
 export default withFirebaseAuth({  //ger tillgång till the properties som ges av FirebaseAuth HOC i App komponenten.
   providers,                        
   firebaseAppAuth,
-})(App);
+})(App);                          //exporterar appen så den kan användas och visas i browsern.
 
 
 
-
+//rad 52 skapar en grid dvs en plats för att stoppa i rubriken som skapas på rad 53 samt loginönstret ligger i denna 
 
 
 
