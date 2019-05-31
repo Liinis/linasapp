@@ -18,7 +18,7 @@ export default Nyhetsartikel; // här exporteras nyhetsartikeln så den kan visa
 
 
 //Rad 5 använder en grid för att placera och layouta innehållet som Nyhetsartikeln består av.
-//Rad 7 hämtar in artikelns bild och bildtext till den enskilda artikeln samt rad 8 stylar den enl img i css-filen. 
-//rad 9 stylar artikeln titel = rubrik h2 enl styling i css-filen
+//Rad 7 hämtar in artikelns bild och bildtext (fråmn apit) till den enskilda artikeln samt rad 8 stylar den enl img i css-filen. 
+//rad 9 hämtar in och stylar artikeln titel = rubrik h2 enl styling i css-filen
 //rad 10 hämtar in innehållsbeskrivningen i artikeln och stylar den som p enl css-filen
-//rad 12 hämtar in läs mer länk så du kan läsa den fulla artikeln i ett nytt webfönster.
+//rad 11 hämtar in läs mer länk så du kan läsa den fulla artikeln i ett nytt webfönster.

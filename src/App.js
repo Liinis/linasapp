@@ -9,8 +9,8 @@ import Nyhetslista from './components/Nyhetslista'
 const firebaseApp = firebase.initializeApp(firebaseConfig); //Initializerar Firebase appen genom att använda konfigurera den
 
 class App extends Component {   //en klass skapas som heter "App". Det är en komponent = befintlig grej från React, och består av element = det man ser på skärmen, som i den här appen de enskilda nyheterna som kommer att visas på sidan.
-  constructor  (props) {      // en constructor gör att...
-    super(props);               //super...props..
+  constructor  (props) {      // en metod som kallas på med sina props är en specialmetod som skapar och initalitierar ett objekt som skapas i en klass.
+    super(props);               //ska man kalla på i början för att få tillgång och kalla på funktioner som är kopplade till en objekts förälder. 
     this.state = {              //this.state läser in artiklarna som en string
       articles: []};            
   }
@@ -95,3 +95,4 @@ export default withFirebaseAuth({  //ger tillgång till the properties som ges a
 
 
 
+//rad 1-7 importerar olika bibliotek och komponenter som behövs för att att appen ska fungera, att man kopplar ihop det som behövs
